@@ -40,6 +40,6 @@ void loop() {
   }
 }
 
-void displayNum(int a){
+void displayNum(int a) {
   for(int i=0; i<7; i++) digitalWrite(i+2, digits[a][i]);
 }
