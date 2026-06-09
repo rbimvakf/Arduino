@@ -14,14 +14,14 @@ byte digits[10][7] = {
 int number = 0;
 bool isRunning = false;
 
-void setup(){
+void setup() {
   for(int i=2; i<9; i++)
     pinMode(i, OUTPUT);
   pinMode(12, INPUT);
   pinMode(13, INPUT);
 }
 
-void loop(){
+void loop() {
   if(digitalRead(13) == HIGH) // #2
     number = 0;
   
@@ -32,7 +32,7 @@ void loop(){
   else
     isRunning = false;
 
-  if(isRunning){
+  if(isRunning) {
     number++;
     delay(1000);
     if(number > 9)
