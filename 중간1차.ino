@@ -22,18 +22,21 @@ void setup(){
 }
 
 void loop(){
-  if(digitalRead(13) == HIGH) number = 0; //#2
+  if(digitalRead(13) == HIGH) // #2
+    number = 0;
   
   displayNum(number);
 
-  if(digitalRead(12) == HIGH) //#1
+  if(digitalRead(12) == HIGH) // #1
     isRunning = true;
-  else isRunning = false;
+  else
+    isRunning = false;
 
   if(isRunning){
     number++;
     delay(1000);
-    if(number > 9) number = 0;
+    if(number > 9)
+      number = 0;
   }
 }
 
