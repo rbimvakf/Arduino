@@ -7,17 +7,19 @@ void setup() {
   lcd.begin(16,2);
   lcd.setBacklightPin(3,POSITIVE);
   lcd.setBacklight(HIGH);
+  
   Serial.begin(9600);
 }
 
 void loop() {
   lcd.setCursor(0,1);
 
-  if(Serial.available()){
+  if(Serial.available()) {
     char a = Serial.read();
-    if(a=='1')
+    
+    if(a == '1')
       lcd.print("#1 Pushed");
-    if(a=='2')
+    if(a == '2')
       lcd.print("#2 Pushed");
   }
 }
