@@ -1,0 +1,39 @@
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#include <Stepper.h>
+
+Stepper Stepper(2048, 11, 9, 10, 8);
+
+Adafruit_SSD1306 display(128, 64, &Wire, -1);
+
+
+void setup() {
+  Serial.begin(9600);
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3c);
+  Stepper.setSpeed(10);
+
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3c)) 
+    Serial.println(F("SSD1306 allocation failed"));
+}
+
+void loop() {
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+  display.setCursor(0, 5); // 0 - 27, 28 - 55, 56 -
+
+  if(Serial.available()) {
+    int a = Serial.parseInt();
+
+    display.println(a);
+
+    int degree = a * 2048 / 360;
+
+    Stepper.step(degree);
+  }
+  
+  display.display();
+  delay(1000);
+}
