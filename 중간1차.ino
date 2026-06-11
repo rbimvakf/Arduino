@@ -27,10 +27,12 @@ void loop() {
   
   displayNum(number);
 
-  if(digitalRead(12) == HIGH) // #1
-    isRunning = true;
-  else
-    isRunning = false;
+  if(digitalRead(12) == HIGH){
+    if(isRunning)
+      isRunning = false;
+    else
+      isRunning = true;
+  }
 
   if(isRunning) {
     number++;
